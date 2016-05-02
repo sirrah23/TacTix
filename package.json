@@ -4,7 +4,7 @@
   "description": "Lets play a friendly game of Tac Tix!",
   "main": "tactix.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha Tests/*" 
   },
   "keywords": [
     "tactix",
