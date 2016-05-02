@@ -1,0 +1,19 @@
+{
+  "name": "tactix",
+  "version": "1.0.0",
+  "description": "Lets play a friendly game of Tac Tix!",
+  "main": "tactix.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tactix",
+    "tac",
+    "tix"
+  ],
+  "author": "Harris",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
+}
