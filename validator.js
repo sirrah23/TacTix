@@ -12,6 +12,16 @@ function sortNumber(a,b) {
     return a - b;
 }
 
+function validNumberOfSelections(squares){
+  if (squares.length == 0 || squares.length > 5){
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
+
 /**
  * Given a list of numbers, will determine if all
  * of them are within the lower and upper bounds
@@ -100,6 +110,7 @@ function validColumn(squares){
 }
 
 module.exports = {
+  validNumberOfSelections,
   withinBoundaries,
   validRow,
   validColumn,
