@@ -1,5 +1,6 @@
 var assert = require('chai').assert;
 var validator = require('../validator.js');
+var tactix = require('../tactix.js');
 
 describe('Make sure player chose between 1 and 5 squares', function(){
 		it('should return true for 1<= size <= 5', function(){
@@ -66,4 +67,19 @@ describe('Check if you have a valid column', function(){
 		assert.equal(false,validator.validColumn([4,9,13]));
 		assert.equal(false,validator.validColumn([0,5,11,16,20]));
   });
+});
+
+describe('The game board should work...', function(){
+	it('should initialize correctly',function(){
+		var game = new tactix();
+		assert.deepEqual(game.board,[true,true,true,
+			true,true,true,
+			true,true,true,
+			true,true,true,
+			true,true,true,
+			true,true,true,
+			true,true,true,
+			true,true,true,true,])
+		assert.deepEqual(game.validator,validator);
+	});
 });
