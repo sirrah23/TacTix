@@ -83,3 +83,43 @@ describe('The game board should work...', function(){
 		assert.deepEqual(game.validator,validator);
 	});
 });
+
+describe('Players should be able to make moves', function(){
+  var game = new tactix();
+  var gameTwo = new tactix();
+  function checkBoard(game,selectedSquares){
+    for(var i = 0; i < game.board.length; i++){
+      if(selectedSquares.indexOf(i) != -1){
+        assert.equal(false,game.board[i]);
+      } else {
+        assert.equal(true,game.board[i]);
+      }
+    }
+  }
+  it('should make moves correctly', function(){
+    assert.equal(true,game.makeMove([1]));
+    checkBoard(game,[1]);
+    assert.deepEqual([1],game.lastMove);
+    assert.equal(true,game.makeMove([2,3,4]));
+    checkBoard(game,[1,2,3,4]);
+    assert.deepEqual([2,3,4],game.lastMove);
+    assert.equal(true,game.makeMove([24]));
+    checkBoard(game,[1,2,3,4,24]);
+    assert.deepEqual([24],game.lastMove);
+  });
+
+  it('should not let you make the same move twice', function(){
+    assert.equal(true,gameTwo.makeMove([24]));
+    checkBoard(gameTwo,[24]);
+    assert.deepEqual([24],gameTwo.lastMove);
+    assert.equal(false,gameTwo.makeMove([24]));
+  });
+
+  it('should not let you make invalid moves', function(){
+    assert.equal(false,gameTwo.makeMove([]));
+    assert.equal(false,gameTwo.makeMove([25]));
+    assert.equal(false,gameTwo.makeMove([-1]));
+    assert.equal(false,gameTwo.makeMove([0,4,5]));
+    assert.equal(false,gameTwo.makeMove([13,14,16]));
+  });
+});
