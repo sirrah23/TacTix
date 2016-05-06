@@ -28,7 +28,7 @@ tactix.prototype.generateBoard = function(n){
  * have already been selected by a player.
  * @param {Array.<number>}
  * @return boolean
-*/
+ */
 tactix.prototype.alreadySelected = function(squares){
 	let alreadySelectedFlag = false;
 	squares.forEach(function(square){
@@ -50,7 +50,7 @@ tactix.prototype.alreadySelected = function(squares){
  * applies the move to the current game board.
  * @param {Array.<number>}
  * @return boolean
-*/
+ */
 tactix.prototype.makeMove = function(squares){
 	if(!this.validator.validNumberOfSelections(squares)){
 		return false;
@@ -76,6 +76,26 @@ tactix.prototype.makeMove = function(squares){
 	this.lastMove = squares;
 
 	return true;
+}
+
+/**
+ * Given an array of square indices, it will reflect
+ * them across the center of the grid (assumed 5x5 grid)
+ * @param {Array.<number>}
+ * @return {Array.<number>}
+ */
+tactix.prototype.computeMove = function(squares){
+  let centerSquareIndex = 12;
+  //Return the center of the board by default
+  if(squares.length == 0){
+    return centerSquareIndex;
+  }
+  //Reflect x-y for square along the center square
+  let reflectedSquares = squares.map(function(square){
+    return centerSquareIndex - square + centerSquareIndex;
+  })
+  reflectedSquares.sort()
+  return reflectedSquares;
 }
 
 module.exports = tactix;
