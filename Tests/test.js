@@ -123,3 +123,25 @@ describe('Players should be able to make moves', function(){
     assert.equal(false,gameTwo.makeMove([13,14,16]));
   });
 });
+
+describe('computer should be able to compute moves', function(){
+  var game = new tactix();
+	console.log(game);
+
+	it('should make the first move at the center', function(){
+			assert.equal(12,game.computeMove([]));
+	})
+
+	it('should reflect all of the input squares', function(){
+			assert.deepEqual([0,1,2],game.computeMove([22,23,24]));
+			assert.deepEqual([11,16,21],game.computeMove([3,8,13]));
+			assert.deepEqual([14,19,24],game.computeMove([0,5,10]));
+			assert.deepEqual([21,22,23],game.computeMove([1,2,3]));
+			assert.deepEqual([12],game.computeMove([12]));
+			assert.deepEqual([10],game.computeMove([14]));
+			assert.deepEqual([1],game.computeMove([23]));
+			assert.deepEqual([2],game.computeMove([22]));
+			assert.deepEqual([16],game.computeMove([8]));
+			assert.deepEqual([20],game.computeMove([4]));
+	})
+})
