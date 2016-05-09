@@ -126,7 +126,6 @@ describe('Players should be able to make moves', function(){
 
 describe('computer should be able to compute moves', function(){
   var game = new tactix();
-	console.log(game);
 
 	it('should make the first move at the center', function(){
 			assert.equal(12,game.computeMove([]));

@@ -5,6 +5,7 @@
  * @constructor
  */
 function tactix(){
+  this.currentPlayer = "COMPUTER";
   this.board = this.generateBoard(25);
   this.validator = require('./validator.js');
   this.lastMove = [];
@@ -75,7 +76,21 @@ tactix.prototype.makeMove = function(squares){
 
 	this.lastMove = squares;
 
+  this.switchPlayers();
+
 	return true;
+}
+
+/**
+ * There are two players in this game, the human and the computer.
+ * This function allows you to switch between them.
+ */
+tactix.prototype.switchPlayers = function(){
+  if this.currentPlayer == "COMPUTER"{
+    this.currentPlayer = "HUMAN";
+  } else {
+    this.currentPlayer = "Computer";
+  }
 }
 
 /**
@@ -93,8 +108,8 @@ tactix.prototype.computeMove = function(squares){
   //Reflect x-y for square along the center square
   let reflectedSquares = squares.map(function(square){
     return centerSquareIndex - square + centerSquareIndex;
-  })
-  reflectedSquares.sort()
+  });
+  reflectedSquares.sort();
   return reflectedSquares;
 }
 
