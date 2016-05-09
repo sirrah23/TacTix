@@ -1,0 +1,14 @@
+div {
+    width: 500px;
+    height: 500px;
+}
+
+div div {
+    width: 100px;
+    height: 100px;
+    outline: 1px solid;
+    float: left;
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center;
+}

@@ -86,11 +86,12 @@ tactix.prototype.makeMove = function(squares){
  * This function allows you to switch between them.
  */
 tactix.prototype.switchPlayers = function(){
-  if this.currentPlayer == "COMPUTER"{
+  if (this.currentPlayer == "COMPUTER"){
     this.currentPlayer = "HUMAN";
   } else {
     this.currentPlayer = "Computer";
   }
+  return this.currentPlayer;
 }
 
 /**
