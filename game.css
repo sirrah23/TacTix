@@ -17,7 +17,7 @@ div div {
     background: red;
 }
 
-button {
+#makeMove {
     position:absolute;
     top: 600px;
     left: 300px;

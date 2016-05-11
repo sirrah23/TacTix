@@ -21,6 +21,14 @@ function setPlayerDisplay(player){
 //Display the current player as set in the
 //game object
 $(function(){
-  $("#currentPlayer").text(theGame.currentPlayer);
   setPlayerDisplay(theGame.currentPlayer);
+});
+
+//Player performs move when he clicks the button
+$(function(){
+  $("#makeMove").click(function(){
+    $( ".red" ).each(function( index ) {
+      console.log( index + ": " + $( this ).text() );
+    });
+  });
 });
