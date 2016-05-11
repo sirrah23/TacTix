@@ -16,3 +16,10 @@ div div {
 .red {
     background: red;
 }
+
+button {
+    position:absolute;
+    top: 600px;
+    left: 300px;
+    z-index: 1;
+}
