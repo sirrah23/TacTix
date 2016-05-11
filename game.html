@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <head>
-<link rel="stylesheet" type="text/css" href="./tactix.css">
+<link rel="stylesheet" type="text/css" href="./game.css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script>
- $(function(){
-    $(".square").click(function() {
-        $(this).toggleClass("red");
-    });
- });
-</script>
+<script src="bundle.js"></script>
 </head> 
 <body>
+<h1> Tac Tix - The Board Game </h1>
 <div class ="board">
     <div class ="square">0</div>
     <div class ="square">1</div>
@@ -38,4 +33,12 @@
     <div class ="square">23</div>
     <div class ="square">24</div>
 </div>
+
+<div id="turn">
+    <h2>Current Player</h2>
+    <span id="currentPlayer"></span>
+</div>
+
+<button name="makeMove"> Make Your Move </button>
+
 </body>
