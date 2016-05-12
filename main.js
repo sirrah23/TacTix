@@ -21,14 +21,35 @@ function setPlayerDisplay(player){
 //Display the current player as set in the
 //game object
 $(function(){
-  setPlayerDisplay(theGame.currentPlayer);
+  setPlayerDisplay(theGame.getCurrentPlayer());
 });
 
 //Player performs move when he clicks the button
 $(function(){
   $("#makeMove").click(function(){
+    //DOM nodes for clicked squares
+    let squareNodeArr = [];
+    //Indices for clicked squares
+    let squareIndexArr = [];
     $( ".red" ).each(function( index ) {
-      console.log( index + ": " + $( this ).text() );
+      //Store the DOM nodes clicked by user
+      squareNodeArr.push($(this));
+      //Store the square indices clicked by user
+      squareIndexArr.push(parseInt($(this).text()));
     });
+    //Let game object handle the move making
+    let moveSuccess = theGame.makeMove(squareIndexArr);
+    if(moveSuccess){
+      //Remove square color and indices if move success
+      squareNodeArr.map(function(squareNode){
+        squareNode.toggleClass("red"); //remove square color
+        squareNode.text(""); //remove the text in the square
+        return;
+      });
+      //Next player's turn
+      setPlayerDisplay(theGame.getCurrentPlayer());
+    } else {
+      alert("Bad MOVE! Try again!");
+    }
   });
 });
