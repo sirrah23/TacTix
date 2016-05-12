@@ -4,7 +4,8 @@
   "description": "Lets play a friendly game of Tac Tix!",
   "main": "tactix.js",
   "scripts": {
-    "test": "mocha Tests/*" 
+    "test": "mocha Tests/*",
+    "watch" : "watchify main.js validator.js tactix.js -o bundle.js"
   },
   "keywords": [
     "tactix",

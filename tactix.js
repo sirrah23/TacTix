@@ -89,7 +89,7 @@ tactix.prototype.switchPlayers = function(){
   if (this.currentPlayer == "COMPUTER"){
     this.currentPlayer = "HUMAN";
   } else {
-    this.currentPlayer = "Computer";
+    this.currentPlayer = "COMPUTER";
   }
   return this.currentPlayer;
 }
@@ -113,5 +113,14 @@ tactix.prototype.computeMove = function(squares){
   reflectedSquares.sort();
   return reflectedSquares;
 }
+
+/**
+ * Getter for the current player
+ * @return {String}
+ */
+tactix.prototype.getCurrentPlayer = function(){
+  return this.currentPlayer;
+}
+
 
 module.exports = tactix;
