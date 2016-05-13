@@ -104,7 +104,7 @@ tactix.prototype.computeMove = function(squares){
   let centerSquareIndex = 12;
   //Return the center of the board by default
   if(squares.length == 0){
-    return centerSquareIndex;
+    return [centerSquareIndex];
   }
   //Reflect x-y for square along the center square
   let reflectedSquares = squares.map(function(square){

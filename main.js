@@ -15,8 +15,33 @@ $(function(){
 //player to be displayed as whoever we want
 function setPlayerDisplay(player){
   $("#currentPlayer").text(player);
+  if(player == "COMPUTER"){
+    computerMakeMove();
+  }
 }
 
+function computerMakeMove(){
+  //Loading spinner
+  //Compute what squares the computer should choose
+  let computerMove = theGame.computeMove(theGame.lastMove);
+  console.log(computerMove);
+  //Make the move on those squares
+  let moveSuccess = theGame.makeMove(computerMove);
+  console.log(moveSuccess);
+  //Remove squares selected by computer from board
+  let boardSquares = $(".square");
+  if(moveSuccess){
+    computerMove.map(function(squareIndex){
+      boardSquares.eq(squareIndex).text("");
+    });
+    //HUMAN's turn
+    setPlayerDisplay(theGame.getCurrentPlayer());
+    return;
+  } else {
+    alert("This should never happen.");
+  }
+
+}
 
 //Display the current player as set in the
 //game object
@@ -46,7 +71,7 @@ $(function(){
         squareNode.text(""); //remove the text in the square
         return;
       });
-      //Next player's turn
+      //COMPUTER's turn
       setPlayerDisplay(theGame.getCurrentPlayer());
     } else {
       alert("Bad MOVE! Try again!");
