@@ -21,27 +21,43 @@ function setPlayerDisplay(player){
   }
 }
 
+//Puts a spinner on the board to indicate that the CPU
+//is currently "thinking" what move it should make
+function putSpinnerOnScreen(){
+  let spinner = $('<div class="loader"></div>');
+  $(".board").append(spinner);
+}
+
+function removeSpinnerFromScreen(){
+  $("div").removeClass("loader");
+}
+
+
 function computerMakeMove(){
   //Loading spinner
-  //Compute what squares the computer should choose
-  let computerMove = theGame.computeMove(theGame.lastMove);
-  console.log(computerMove);
-  //Make the move on those squares
-  let moveSuccess = theGame.makeMove(computerMove);
-  console.log(moveSuccess);
-  //Remove squares selected by computer from board
-  let boardSquares = $(".square");
-  if(moveSuccess){
-    computerMove.map(function(squareIndex){
-      boardSquares.eq(squareIndex).text("");
-    });
-    //HUMAN's turn
-    setPlayerDisplay(theGame.getCurrentPlayer());
-    return;
-  } else {
-    alert("This should never happen.");
-  }
-
+  putSpinnerOnScreen();
+  setTimeout(function(){
+    //Compute what squares the computer should choose
+    let computerMove = theGame.computeMove(theGame.lastMove);
+    console.log(computerMove);
+    //Make the move on those squares
+    let moveSuccess = theGame.makeMove(computerMove);
+    console.log(moveSuccess);
+    //Remove squares selected by computer from board
+    let boardSquares = $(".square");
+    if(moveSuccess){
+      computerMove.map(function(squareIndex){
+        boardSquares.eq(squareIndex).text("");
+      });
+      //Remove spinner
+      removeSpinnerFromScreen();
+      //HUMAN's turn
+      setPlayerDisplay(theGame.getCurrentPlayer());
+      return;
+    } else {
+      alert("This should never happen.");
+    }
+  },2000);
 }
 
 //Display the current player as set in the
