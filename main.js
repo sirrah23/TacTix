@@ -31,7 +31,6 @@ function removeSpinnerFromScreen(){
   $("div").removeClass("loader");
 }
 
-
 function computerMakeMove(){
   //Loading spinner
   putSpinnerOnScreen();

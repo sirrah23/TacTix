@@ -32,7 +32,6 @@ function removeSpinnerFromScreen(){
   $("div").removeClass("loader");
 }
 
-
 function computerMakeMove(){
   //Loading spinner
   putSpinnerOnScreen();
@@ -359,4 +358,4 @@ module.exports = {
   validColumn,
 };
 
-},{}]},{},[1,3,2]);
+},{}]},{},[1,2,3]);
