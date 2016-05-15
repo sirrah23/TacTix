@@ -108,6 +108,7 @@ function tactix(){
   this.board = this.generateBoard(25);
   this.validator = require('./validator.js');
   this.lastMove = [];
+  this.movesMade = 0;
 }
 
 /**
@@ -146,6 +147,19 @@ tactix.prototype.alreadySelected = function(squares){
 }
 
 /**
+ * Checks to see if the game is over yet or not.
+ * Once all 25 squares have been selected it's game over.
+ * @return boolean
+ */
+tactix.prototype.gameOver = function(){
+  if(this.movesMade == 25){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
  * Determines if proposed move is valid and if so
  * applies the move to the current game board.
  * @param {Array.<number>}
@@ -174,6 +188,8 @@ tactix.prototype.makeMove = function(squares){
 	}.bind(this));
 
 	this.lastMove = squares;
+
+  this.movesMade += squares.length;
 
   this.switchPlayers();
 

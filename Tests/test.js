@@ -10,13 +10,13 @@ describe('Make sure player chose between 1 and 5 squares', function(){
 				assert.equal(true, validator.validNumberOfSelections([21,26,27]));
 				assert.equal(true, validator.validNumberOfSelections([1,2,3,4]));
 				assert.equal(true, validator.validNumberOfSelections([13,12,11,10]));
-		})
+		});
 
 		it('should return false for size 0 or more than 5', function(){
 				assert.equal(false, validator.validNumberOfSelections([]));
 				assert.equal(false, validator.validNumberOfSelections([0,1,2,3,4,5,6]));
 				assert.equal(false, validator.validNumberOfSelections([25,26,27,28,29,30]));
-		})
+		});
 })
 
 
@@ -129,7 +129,7 @@ describe('computer should be able to compute moves', function(){
 
 	it('should make the first move at the center', function(){
 			assert.equal(12,game.computeMove([]));
-	})
+	});
 
 	it('should reflect all of the input squares', function(){
 			assert.deepEqual([0,1,2],game.computeMove([22,23,24]));
@@ -142,5 +142,29 @@ describe('computer should be able to compute moves', function(){
 			assert.deepEqual([2],game.computeMove([22]));
 			assert.deepEqual([16],game.computeMove([8]));
 			assert.deepEqual([20],game.computeMove([4]));
-	})
-})
+	});
+});
+
+describe('Check if Game Over works', function(){
+
+  it('should tell you how many moves have been made',function(){
+    var game = new tactix();
+    game.makeMove([0,1,2,3,4]);
+    assert.equal(game.movesMade,5);
+    game.makeMove([5,10,15]);
+    assert.equal(game.movesMade,8);
+    game.makeMove([5,10,15]);
+    assert.equal(game.movesMade,8);
+  });
+
+  it('should tell you if the game is over',function(){
+    var game = new tactix();
+    game.makeMove([0,1,2,3,4]);
+    game.makeMove([5,6,7,8,9]);
+    game.makeMove([10,11,12,13,14]);
+    game.makeMove([15,16,17,18,19]);
+    assert.equal(game.gameOver(),false);
+    game.makeMove([20,21,22,23,24]);
+    assert.equal(game.gameOver(),true);
+  });
+});
