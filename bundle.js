@@ -28,6 +28,7 @@ function putSpinnerOnScreen(){
   $(".board").append(spinner);
 }
 
+//Removes spinner from the board once CPU turn is over
 function removeSpinnerFromScreen(){
   $("div").removeClass("loader");
 }
@@ -52,6 +53,10 @@ function computerMakeMove(){
       removeSpinnerFromScreen();
       //HUMAN's turn
       setPlayerDisplay(theGame.getCurrentPlayer());
+      //Game over message
+      if(theGame.gameOver()){
+        alert("Game over! The CPU won!");
+      }
       return;
     } else {
       alert("This should never happen.");
@@ -358,4 +363,4 @@ module.exports = {
   validColumn,
 };
 
-},{}]},{},[1,2,3]);
+},{}]},{},[1,3,2]);
